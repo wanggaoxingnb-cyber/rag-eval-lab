@@ -13,7 +13,7 @@
       "scope_exclusion_guard": false,
       "description": "较长切块、低阈值、无文档多样性、无查询扩展、无注入防护"
     },
-    "generated_at": "2026-11-13T13:08:54.280781+00:00",
+    "generated_at": "2026-11-13T13:15:41.795805+00:00",
     "summary": {
       "total": 16,
       "passed": 9,
@@ -737,7 +737,7 @@
       "scope_exclusion_guard": true,
       "description": "章节内小块、阈值提升、标题加权、文档多样性、查询扩展与注入防护"
     },
-    "generated_at": "2026-11-13T13:08:54.285383+00:00",
+    "generated_at": "2026-11-13T13:15:41.800164+00:00",
     "summary": {
       "total": 16,
       "passed": 16,
