@@ -16,6 +16,12 @@
 - [ ] 全项目无密码、令牌、公司原文、客户数据、同事姓名和内网地址。
 - [ ] 公共部署后，另一设备/无痕窗口可打开链接；部署前不宣称已有公开链接。
 
+## 公开地址
+
+- 页面：https://wanggaoxingnb-cyber.github.io/rag-eval-lab/
+- 仓库：https://github.com/wanggaoxingnb-cyber/rag-eval-lab
+- `docs/` 是 `web/` 的发布镜像；修改后运行 `python3 src/sync_docs.py`，不要只改其中一份。
+
 ## 当前真实结果
 
 - 基线：**9/16（56.25%）**；多文档证据覆盖 1 例失败、无依据拒答 2 例失败、提示注入 4 例失败。
@@ -26,6 +32,7 @@
 
 ```bash
 python3 src/evaluate.py
+python3 src/sync_docs.py  # 重新评测并同步到 GitHub Pages 的 docs/
 python3 -m http.server 8765 --directory web
 # 打开 http://127.0.0.1:8765
 ```
