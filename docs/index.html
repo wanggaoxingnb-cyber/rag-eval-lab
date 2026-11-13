@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="可复现的 RAG 检索、引用、拒答与提示注入评测闭环">
+  <title>RAG Eval Lab · 可复现评测闭环</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="eyebrow">PUBLIC SYNTHETIC DATA · NO EXTERNAL MODEL CALLS</div>
+      <h1>RAG Eval Lab</h1>
+      <p>同一批虚构制度、同一组问题，对比基线与改进配置。重点不是通过率好看，而是能看见失败在哪一层、修复后是否真的回归。</p>
+      <div class="badges"><span>16 条案例</span><span>4 类能力</span><span>确定性答案组装</span><span>可重复运行</span></div>
+    </header>
+
+    <section class="notice">
+      <strong>边界：</strong>这里评估检索、证据覆盖、无依据拒答和提示注入防护。没有调用 LLM，不把这些结果冒充真实生成质量或企业整体准确率。
+    </section>
+
+    <section id="summary" class="summary" aria-label="配置对比"></section>
+    <section id="categories" class="panel" aria-label="分类指标"></section>
+
+    <section class="panel">
+      <div class="section-head">
+        <div><div class="eyebrow">CASE LEVEL EVIDENCE</div><h2>逐题证据</h2></div>
+        <div class="controls">
+          <select id="configSelect" aria-label="选择配置"><option value="improved">改进配置</option><option value="baseline">基线配置</option></select>
+          <select id="categorySelect" aria-label="筛选类别"><option value="all">全部类别</option><option value="direct">直接检索</option><option value="multi_doc">多文档</option><option value="refusal">无依据拒答</option><option value="injection">提示注入</option></select>
+          <select id="statusSelect" aria-label="筛选结果"><option value="all">全部结果</option><option value="failed">仅失败</option><option value="passed">仅通过</option></select>
+        </div>
+      </div>
+      <div id="cases" class="cases"></div>
+    </section>
+
+    <section class="panel method">
+      <div class="eyebrow">REPRODUCIBLE METHOD</div><h2>如何复现</h2>
+      <pre><code>python3 src/evaluate.py</code></pre>
+      <p>评测脚本会重新执行所有案例并覆盖本页使用的 <code>results.json</code>，不是手工填写指标。接入真实模型时，必须重新固定模型、Prompt、参数和数据版本。</p>
+    </section>
+    <footer>数据版本：public-synthetic-v1 · 结果生成时间见 results.json · 公开虚构示例</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
